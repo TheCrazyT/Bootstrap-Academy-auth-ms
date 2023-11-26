@@ -73,6 +73,7 @@ class CreateUser(BaseModel):
     recaptcha_response: str | None = Field(description="Recaptcha response (required if not requested by an admin)")
     enabled: bool = Field(True, description="Whether the user is enabled")
     admin: bool = Field(False, description="Whether the user is an administrator")
+    webAuthn: str | None = Field(..., description="WebAuthn-info of the user")
 
 
 class UpdateUser(BaseModel):
