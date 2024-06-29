@@ -33,7 +33,7 @@
         doCheck = false;
         overrides = defaultPoetryOverrides.extend (self: super: {
           frozenlist = super.frozenlist.overridePythonAttrs (old: {
-            buildInputs = (old.buildInputs or []) ++ [super.expandvars];
+            buildInputs = (old.buildInputs or []) ++ [pkgs.python311.pkgs.flit-core,super.expandvars];
           });
           # workaround https://github.com/nix-community/poetry2nix/issues/568
           structlog = super.structlog.overridePythonAttrs (old: {
