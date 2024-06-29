@@ -37,7 +37,7 @@
           });
           # workaround https://github.com/nix-community/poetry2nix/issues/568
           structlog = super.structlog.overridePythonAttrs (old: {
-            buildInputs = old.buildInputs or [ ] ++ [ python311.pkgs.flit-core ];
+            buildInputs = old.buildInputs or [ ] ++ [ pkgs.python311.pkgs.flit-core ];
           });
         });
       };
