@@ -39,6 +39,9 @@
           docutils = super.structlog.overridePythonAttrs (old: {
             buildInputs = old.buildInputs or [ ] ++ [ pkgs.python311.pkgs.flit-core ];
           });
+          jinja2 = super.structlog.overridePythonAttrs (old: {
+            buildInputs = old.buildInputs or [ ] ++ [ pkgs.python311.pkgs.flit-core ];
+          });
         });
       };
     });
