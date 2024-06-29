@@ -36,10 +36,10 @@
             buildInputs = (old.buildInputs or []) ++ [super.expandvars];
           });
           # workaround https://github.com/nix-community/poetry2nix/issues/568
-          docutils = super.structlog.overridePythonAttrs (old: {
+          docutils = super.docutils.overridePythonAttrs (old: {
             buildInputs = old.buildInputs or [ ] ++ [ pkgs.python311.pkgs.flit-core ];
           });
-          jinja2 = super.structlog.overridePythonAttrs (old: {
+          jinja2 = super.jinja2.overridePythonAttrs (old: {
             buildInputs = old.buildInputs or [ ] ++ [ pkgs.python311.pkgs.flit-core ];
           });
         });
