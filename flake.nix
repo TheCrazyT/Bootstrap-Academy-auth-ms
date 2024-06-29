@@ -35,6 +35,10 @@
           frozenlist = super.frozenlist.overridePythonAttrs (old: {
             buildInputs = (old.buildInputs or []) ++ [super.expandvars];
           });
+          # workaround https://github.com/nix-community/poetry2nix/issues/568
+          structlog = super.structlog.overridePythonAttrs (old: {
+            buildInputs = old.buildInputs or [ ] ++ [ python310.pkgs.flit-core ];
+          });
         });
       };
     });
