@@ -1,7 +1,8 @@
 """Endpoints for webauthn"""
 
 # Some notes:
-#  * for local testing, only use "localhost" instead of "127.0.0.1", since ip-addresses do not seem to be supported by webauthn
+#  * for local testing, only use "localhost" instead of "127.0.0.1"
+#    , since ip-addresses do not seem to be supported by webauthn
 #  * also make shure that FRONTEND_BASE_URL is "http://localhost:3000"
 
 import secrets
@@ -137,7 +138,7 @@ async def verify_registration_request(credential: RegistrationCredential) -> Any
 
     *Requirements:*
     """
-    serverName = get_server_name()
+    server_name = get_server_name()
     credential.raw_id = base64url_to_bytes(credential.id)
     credential.response.client_data_json = base64url_to_bytes(credential.response.client_data_json.decode("utf-8"))
     credential.response.attestation_object = base64url_to_bytes(credential.response.attestation_object.decode("utf-8"))
@@ -148,7 +149,7 @@ async def verify_registration_request(credential: RegistrationCredential) -> Any
     verify_resp = verify_registration_response(
         credential=credential,
         expected_challenge=challenge,
-        expected_rp_id=serverName,
+        expected_rp_id=server_name,
         expected_origin=settings.frontend_base_url,
         require_user_verification=True,
     )
