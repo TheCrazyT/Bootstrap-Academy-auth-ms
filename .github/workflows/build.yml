@@ -32,4 +32,4 @@ jobs:
           name: bootstrap-academy
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           useDaemon: false
-      - run: nix build -vvv
+      - run: nix build
